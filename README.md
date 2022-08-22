@@ -1,9 +1,6 @@
 # asset-preview
 
 
-
-
-
 ## Project setup
 ```
 npm install
