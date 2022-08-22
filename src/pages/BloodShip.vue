@@ -81,6 +81,8 @@ import SeeksRelationGraph from "relation-graph";
 import activeNode from "../assets/img/node_blue.png";
 import grayNode from "../assets/img/node_gray.png";
 import background from '../assets/img/background.png'
+import artificialCollect from '../assets/img/artificial_gray@2x.png'
+import platformCollect from '../assets/img/platform_collect@2x.png'
 
 export default {
   name: "blood-ship",
@@ -134,14 +136,16 @@ export default {
       const graphData = {
         rootId: 'a',
         nodes: [
-          {id: 'a', name: 'a', data: {myicon: activeNode, text: '水驱控制储量', formula: '水驱控制储量 = 水驱储量控制程度*地质储量'}, color: '#fff'},
-          {id: 'b', name: 'b', data: {myicon: activeNode, text: '水驱储量控制程度表', formula: '水驱控制程度 = 与注水井连通的采油井射开的有效厚度（m）/ 井组内采油井射开的总有效厚度（m）'}, color: '#fff'},
-          {id: 'b1', name: 'b1', data: {myicon: activeNode, text: '与注水井连通采油井射开有效厚度', formula: '与注水井连通的采油井射开的有效厚度=∑井组内见效油井射开的有效厚度'}, color: '#fff'},
-          {id: 'b2', name: 'b2', data: {myicon: activeNode, text: '与注水井连通采油井射开有效厚度', formula: '井组内采油井射开的总有效厚度=∑(单井的有效厚度底界井深-单井有效厚度顶界井深）'}, color: '#fff'},
-          {id: 'b1-1', name: 'b1-1', data: {myicon: grayNode, text: '是否见效'}, color: '#fff'},
-          {id: 'b1-2', name: 'b1-2', data: {myicon: activeNode, text: '射开有效厚度'}, color: '#fff'},
-          {id: 'b2-1', name: 'b2-1', data: {myicon: activeNode, text: '射孔层位'}, color: '#fff'},
-          {id: 'c', name: 'c', data: {myicon: activeNode, text: '动用储量'}, color: '#fff'}],
+          {id: 'a', name: 'a', data: {myicon: activeNode, text: '水驱控制储量', formula: '水驱控制储量 = 水驱储量控制程度*地质储量'}},
+          {id: 'b', name: 'b', data: {myicon: activeNode, text: '水驱储量控制程度表', formula: '水驱控制程度 = 与注水井连通的采油井射开的有效厚度（m）/ 井组内采油井射开的总有效厚度（m）'}},
+          {id: 'b1', name: 'b1', data: {myicon: activeNode, text: '与注水井连通采油井射开有效厚度', formula: '与注水井连通的采油井射开的有效厚度=∑井组内见效油井射开的有效厚度'}},
+          {id: 'b2', name: 'b2', data: {myicon: activeNode, text: '与注水井连通采油井射开有效厚度', formula: '井组内采油井射开的总有效厚度=∑(单井的有效厚度底界井深-单井有效厚度顶界井深）'}},
+          {id: 'b1-1', name: 'b1-1', data: {myicon: grayNode, text: '是否见效'}},
+          {id: 'b1-2', name: 'b1-2', data: {myicon: activeNode, text: '射开有效厚度'}},
+          {id: 'b2-1', name: 'b2-1', data: {myicon: activeNode, text: '射孔层位'}},
+          {id: 'c', name: 'c', fixed: true, x: 976, y: 549, data: {myicon: activeNode, text: '动用储量'}},
+          {id: 'd', name: 'd', data: {myicon: artificialCollect, text: '人工整理'}},
+          {id: 'e', name: 'e', fixed: true, x: 1175, y: 525, data: {myicon: platformCollect, text: '统一采集平台'}}],
         links: [
           {from: 'b', to: 'a'},
           {from: 'c', to: 'a'},
@@ -151,7 +155,13 @@ export default {
           {from: 'b1-2', to: 'b1'},
           {from: 'b1-2', to: 'b2'},
           {from: 'b2-1', to: 'b2'},
-          {from: 'b2-1', to: 'b1'}
+          {from: 'b2-1', to: 'b1'},
+
+          {from: 'd', to: 'b1-1', isHideArrow: true},
+          {from: 'e', to: 'b1-2', isHideArrow: true},
+          {from: 'e', to: 'b2-1', isHideArrow: true},
+          {from: 'e', to: 'c', isHideArrow: true}
+
         ]
       };
 
